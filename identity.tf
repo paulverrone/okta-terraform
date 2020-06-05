@@ -13,6 +13,7 @@ resource "okta_user" "okta_terraform_admin" {
   last_name  = "Terraform Admin"
   login      = "OktaTerraformAdmin@iatcore.com"
   email      = "OktaTerraformAdmin@iatcore.com"
+  status     = "ACTIVE"
   admin_roles = ["SUPER_ADMIN"]
 }
 
