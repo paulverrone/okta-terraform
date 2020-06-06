@@ -35,6 +35,6 @@ resource "okta_group" "service_accounts" {
     name        = "Okta Service Accounts"
     description = "Groups that contains all users that represent Service Accounts"
     users = [
-        "${okta_user.okta_terraform_admin.id}"
+        "${data.okta_user.okta_terraform_admin.id}"
     ]
 }
