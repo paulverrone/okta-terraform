@@ -21,11 +21,11 @@ resource "okta_user" "okta_terraform_admin" {
     
 data "okta_user" "okta_terraform_admin" {
    search {
-       name = profile.firstName
+       name = "profile.firstName"
        value = "Okta"
    }
    search {
-       name = profile.lastName
+       name = "profile.lastName"
        value = "Terraform Admin"
    }
 }
