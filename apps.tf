@@ -31,6 +31,7 @@ resource "okta_app_auto_login" "corporate_facebook" {
   }
 }
 
+/* Need to determine how to specify Github Organization Name
 resource "okta_app_auto_login" "github" {
   label          = "GitHub Team"
   preconfigured_app = "github team"
@@ -40,3 +41,4 @@ resource "okta_app_auto_login" "github" {
     ignore_changes = [groups]
   }
 }
+*/
