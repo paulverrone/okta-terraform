@@ -36,6 +36,11 @@ data "okta_group" "recruiting_group" {
     name = "D_Recruiting"    
 }
 
+# Find DMZ admin group
+data "okta_group" "dmzadmin_group" {
+    name = "D_DMZ_Web_Server_Admins"    
+}
+
 # Add recruiting group to apps
 resource "okta_app_group_assignment" "assign_twitter_recruiting" {
   app_id   = "resource.okta_app_auto_login.twitter.id"
