@@ -10,4 +10,6 @@ resource "okta_policy_rule_signon" "signon_rule_always_mfa" {
   policyid = "${okta_policy_signon.signon_always_mfa.id}"
   name     = "Always MFA"
   status   = "ACTIVE"
+  mfa_required = "true"
+  mfa_prompt = "SESSION"
 }
