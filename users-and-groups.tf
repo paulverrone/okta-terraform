@@ -30,3 +30,13 @@ resource "okta_group" "service_accounts" {
         "${data.okta_user.okta_terraform_admin.id}"
     ]
 }
+
+# Find and add "recruiting" group to "twitter"
+data "okta_group" "recruiting_group" {
+    name = "D_Recruiting"    
+}
+
+resource "okta_app_group_assignment" "assign_twitter_recruiting" {
+  app_id   = "resource.okta_app_auto_login.twitter.id"
+  group_id = "data.okta_group.recruiting_group.id"
+}
