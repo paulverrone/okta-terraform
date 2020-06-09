@@ -13,7 +13,7 @@ resource "okta_app_auto_login" "corporate_linkedin" {
   label          = "LinkedIn - Shared Corporate Account"
   preconfigured_app = "linkedin"
   credentials_scheme = "SHARED_USERNAME_AND_PASSWORD"
-  shared_username = "iatcore"
+  shared_username = "ripley.dalton@iatcore.com"
   shared_password = "t+#_d!VhM$N2j@JS"
   lifecycle {
     ignore_changes = [groups]
