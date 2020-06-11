@@ -7,6 +7,10 @@ resource "okta_policy_mfa" "recruiting_mfa_policy" {
   okta_otp = {
     enroll = "REQUIRED"
   }
+  
+  okta_push = {
+    enroll = "REQUIRED"
+  }  
 
   google_otp = {
     enroll = "NOT_ALLOWED"
