@@ -16,7 +16,7 @@ resource "okta_policy_mfa" "recruiting_mfa_policy" {
     enroll = "NOT_ALLOWED"
   } 
 
-  groups_included = ["data.okta_group.recruiting_group.id"]
+  groups_included = ["${data.okta_group.recruiting_group.id}"]
   
   depends_on = [
     okta_factor.factor_okta_verify,
@@ -26,12 +26,12 @@ resource "okta_policy_mfa" "recruiting_mfa_policy" {
 }
 
 resource okta_policy_rule_mfa marketing_mfa {
-  policyid           = "okta_policy_mfa.recruiting_mfa_policy.id"
+  policyid           = okta_policy_mfa.recruiting_mfa_policy.id
   name               = "MFA Enrollment"
   status             = "ACTIVE"
   enroll             = "LOGIN"
   network_connection = "ZONE"
-  network_excludes   = ["okta_network_zone.blacklisted_countries.id"]
+  network_excludes   = ["${okta_network_zone.blacklisted_countries.id}"]
 }
 
 
@@ -40,17 +40,17 @@ resource "okta_policy_signon" "recruiting_signon_policy" {
   name            = "Recruiting"
   status          = "ACTIVE"
   description     = "MFA when not in company location"
-  groups_included = ["data.okta_group.dmzadmin_group.id"]
+  groups_included = ["${data.okta_group.dmzadmin_group.id}"]
 }
 
 resource "okta_policy_rule_signon" "recruiting_signon_rule_mfa" {
-  policyid = "okta_policy_signon.recruiting_signon_policy.id"
+  policyid = okta_policy_signon.recruiting_signon_policy.id
   name     = "Always MFA when not in company location"
   status   = "ACTIVE"
   mfa_required = "true"
   mfa_prompt = "DEVICE"
   network_connection = "ZONE"
-  network_excludes = ["okta_network_zone.corporate_locations.id"]
+  network_excludes = ["${okta_network_zone.corporate_locations.id}"]
 }
 
 # Custom app sign-on policies
