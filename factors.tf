@@ -17,5 +17,5 @@ resource "okta_factor" "factor_okta_email" {
 */
   
 resource "okta_factor" "factor_google_authenticator" {
-  provider = okta.GoogleOtpFactor
+  provider = GoogleOtpFactor
 }
