@@ -26,7 +26,7 @@ resource "okta_policy_mfa" "recruiting_mfa_policy" {
 }
 
 resource okta_policy_rule_mfa marketing_mfa {
-  policyid           = "${okta_policy_signon.test.id}"
+  policyid           = "${okta_policy_mfa.recruiting_mfa_policy.id}"
   name               = "MFA Enrollment"
   status             = "ACTIVE"
   enroll             = "LOGIN"
