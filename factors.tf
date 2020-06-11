@@ -1,20 +1,19 @@
-/*
+
 resource "okta_factor" "factor_okta_verify" {
-  provider = okta_otp
+  provider_id = "okta_otp"
 }
 
 resource "okta_factor" "factor_okta_push" {
-  provider = okta_push
+  provider_id = "okta_push"
 }
 
 resource "okta_factor" "factor_okta_call" {
-  provider = okta_call
+  provider_id = "okta_call"
 }
 
 resource "okta_factor" "factor_okta_email" {
-  provider = okta_email
+  provider_id = "okta_email"
 }
-*/
   
 resource "okta_factor" "factor_google_authenticator" {
   provider_id = "google_otp"
