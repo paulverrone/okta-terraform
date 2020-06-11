@@ -36,17 +36,22 @@ resource okta_policy_rule_mfa marketing_mfa {
 
 
 # Custom sign-on policies
-resource "okta_policy_signon" "signon_always_mfa" {
-  name            = "Always MFA"
+resource "okta_policy_signon" "recruiting_signon_policy" {
+  name            = "Recruiting"
   status          = "ACTIVE"
-  description     = "Always MFA for a subset of users"
+  description     = "MFA when not in company location"
   groups_included = ["data.okta_group.dmzadmin_group.id"]
 }
 
-resource "okta_policy_rule_signon" "signon_rule_always_mfa" {
-  policyid = "okta_policy_signon.signon_always_mfa.id"
-  name     = "Always MFA"
+resource "okta_policy_rule_signon" "recruiting_signon_rule_mfa" {
+  policyid = "okta_policy_signon.recruiting_signon_policy.id"
+  name     = "Always MFA when not in company location"
   status   = "ACTIVE"
   mfa_required = "true"
-  mfa_prompt = "SESSION"
+  mfa_prompt = "DEVICE"
+  network_connection = "ZONE"
+  network_excludes = ["okta_network_zone.corporate_locations.id"]
 }
+
+# Custom app sign-on policies
+# Not able to set via Okta provider yet
