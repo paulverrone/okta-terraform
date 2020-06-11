@@ -17,5 +17,5 @@ resource "okta_factor" "factor_okta_email" {
 */
   
 resource "okta_factor" "factor_google_authenticator" {
-  id = google_otp
+  provider = google_otp
 }
