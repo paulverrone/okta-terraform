@@ -43,16 +43,16 @@ data "okta_group" "dmzadmin_group" {
 
 # Add recruiting group to apps
 resource "okta_app_group_assignment" "assign_twitter_recruiting" {
-  app_id   = "resource.okta_app_auto_login.twitter.id"
+  app_id   = resource.okta_app_auto_login.twitter.id
   group_id = data.okta_group.recruiting_group.id
 }
 
 resource "okta_app_group_assignment" "assign_facebook_recruiting" {
   app_id   = "resource.okta_app_auto_login.facebook.id"
-  group_id = "data.okta_group.recruiting_group.id"
+  group_id = data.okta_group.recruiting_group.id
 }
 
 resource "okta_app_group_assignment" "assign_linkedin_recruiting" {
   app_id   = "resource.okta_app_auto_login.linkedin.id"
-  group_id = "data.okta_group.recruiting_group.id"
+  group_id = data.okta_group.recruiting_group.id
 }
