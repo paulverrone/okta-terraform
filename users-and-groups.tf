@@ -41,6 +41,11 @@ data "okta_group" "dmzadmin_group" {
     name = "D_DMZ_Web_Server_Admins"    
 }
 
+# Find everyone group
+data "okta_group" "all_group" {
+    name = "Everyone"    
+}
+
 # Add recruiting group to apps
 resource "okta_app_group_assignment" "assign_twitter_recruiting" {
   app_id   = okta_app_auto_login.corporate_twitter.id
@@ -55,4 +60,9 @@ resource "okta_app_group_assignment" "assign_facebook_recruiting" {
 resource "okta_app_group_assignment" "assign_linkedin_recruiting" {
   app_id   = okta_app_auto_login.corporate_linkedin.id
   group_id = data.okta_group.recruiting_group.id
+}
+
+resource "okta_app_group_assignment" "assign_oidc_example_all" {
+    app_id = okta_app_oauth.oidc_sample.id
+    group_id = data.okta_group.all_group.id
 }
