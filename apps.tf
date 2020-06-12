@@ -3,7 +3,7 @@ resource "okta_app_auto_login" "corporate_twitter" {
   preconfigured_app = "twitter"
   credentials_scheme = "SHARED_USERNAME_AND_PASSWORD"
   shared_username = "iatcore"
-  shared_password = vars.shared_admin_password_swa
+  shared_password = var.shared_admin_password_swa
   lifecycle {
     ignore_changes = [users, groups]
   }
@@ -14,7 +14,7 @@ resource "okta_app_auto_login" "corporate_linkedin" {
   preconfigured_app = "linkedin"
   credentials_scheme = "SHARED_USERNAME_AND_PASSWORD"
   shared_username = "ripley.dalton@iatcore.com"
-  shared_password = vars.shared_admin_password_swa
+  shared_password = var.shared_admin_password_swa
   lifecycle {
     ignore_changes = [users, groups]
   }
@@ -25,7 +25,7 @@ resource "okta_app_auto_login" "corporate_facebook" {
   preconfigured_app = "facebook"
   credentials_scheme = "SHARED_USERNAME_AND_PASSWORD"
   shared_username = "iatcore"
-  shared_password = vars.shared_admin_password_swa
+  shared_password = var.shared_admin_password_swa
   lifecycle {
     ignore_changes = [users, groups]
   }
