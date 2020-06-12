@@ -37,7 +37,7 @@ resource "okta_app_oauth" "oidc_sample" {
   type           = "web"
   redirect_uris  = ["https://super-widget.oktaprise.com"]
   login_uri      = "https://super-widget.oktaprise.com"
-  grant_types    = ["implicit", "authorization_code", "refresh"]
+  grant_types    = ["implicit", "authorization_code", "refresh_token"]
   lifecycle {
     ignore_changes = [users, groups]
   }
