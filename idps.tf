@@ -4,7 +4,7 @@ resource "okta_idp_social" "google" {
   name          = "Google IdP"
 
   scopes = [
-    "public_profile",
+    "profile",
     "email",
   ]
 
