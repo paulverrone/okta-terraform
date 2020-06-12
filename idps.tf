@@ -11,6 +11,6 @@ resource "okta_idp_social" "google" {
   client_id         = var.sso_google_client_id
   client_secret     = var.sso_google_client_secret
   username_template = "idpuser.email"
-  match_type        = "CUSTOM_ATTRIBUTE"
-  match_attribute   = "customfieldId"
+  #subject_match_type        = "CUSTOM_ATTRIBUTE"
+  #subject_match_attribute   = "customfieldId"
 }
