@@ -17,7 +17,7 @@ resource "okta_idp_social" "google" {
 }
 
 data okta_policy idp_discovery_policy {
-  name = "IDP Discovery Policy"
+  name = "Idp Discovery Policy"
   type = "IDP_DISCOVERY"
 }
 
