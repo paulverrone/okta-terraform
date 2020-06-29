@@ -6,6 +6,7 @@ resource "okta_idp_social" "google" {
   scopes = [
     "profile",
     "email",
+    "openid"
   ]
 
   client_id         = var.sso_google_client_id
