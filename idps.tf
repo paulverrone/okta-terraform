@@ -1,4 +1,6 @@
-resource "okta_idp_social" "google" {
+# Providers
+
+resource okta_idp_social google {
   type          = "GOOGLE"
   protocol_type = "OAUTH2"
   name          = "Google IdP"
@@ -16,16 +18,18 @@ resource "okta_idp_social" "google" {
   #subject_match_attribute   = "customfieldId"
 }
 
+# Routing Rules
 data okta_policy idp_discovery_policy {
   name = "Idp Discovery Policy"
   type = "IDP_DISCOVERY"
 }
 
-resource okta_policy_rule_idp_discovery idp_discovery_policy {
+resource okta_policy_rule_idp_discovery idp_routing_rule_google {
   policyid             = data.okta_policy.idp_discovery_policy.id
   priority             = 1
   name                 = "IDP Discovery Policy"
   idp_type             = "GOOGLE"
+  idp_id               = data.okta_idp_social.google.id
   user_identifier_type = "IDENTIFIER"
 
   user_identifier_patterns {
@@ -33,35 +37,3 @@ resource okta_policy_rule_idp_discovery idp_discovery_policy {
     value      = "gmail.com"
   }
 }
-
-/*
-resource "okta_idp_social" "facebook" {
-  type          = "FACEBOOK"
-  protocol_type = "OAUTH2"
-  name          = "Facebook IdP"
-
-  scopes = [
-    "public_profile",
-    "email",
-  ]
-
-  client_id         = "abcd123"
-  client_secret     = "abcd123"
-  username_template = "idpuser.email"
-}
-
-resource "okta_idp_social" "linkedin" {
-  type          = "LINKEDIN"
-  protocol_type = "OAUTH2"
-  name          = "LinkedIn IDP"
-
-  scopes = [
-    "r_liteprofile",
-    "r_emailaddress",
-  ]
-
-  client_id         = "abcd123"
-  client_secret     = "abcd123"
-  username_template = "idpuser.email"
-}
-*/
