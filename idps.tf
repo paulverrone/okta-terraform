@@ -1,6 +1,6 @@
 # Providers
 
-resource okta_idp_social google {
+resource "okta_idp_social" "google" {
   type          = "GOOGLE"
   protocol_type = "OAUTH2"
   name          = "Google IdP"
@@ -29,7 +29,7 @@ data okta_policy idp_discovery_policy {
 resource okta_policy_rule_idp_discovery idp_routing_rule_google {
   policyid             = data.okta_policy.idp_discovery_policy.id
   priority             = 1
-  name                 = "IDP Discovery Policy"
+  name                 = "Sign in with Google"
   idp_type             = "GOOGLE"
   idp_id               = resource.okta_idp_social.google.id
   user_identifier_type = "IDENTIFIER"
