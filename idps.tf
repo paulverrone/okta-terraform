@@ -15,6 +15,7 @@ resource "okta_idp_social" "google" {
   #subject_match_attribute   = "customfieldId"
 }
 
+/*
 resource "okta_idp_social" "facebook" {
   type          = "FACEBOOK"
   protocol_type = "OAUTH2"
@@ -44,3 +45,4 @@ resource "okta_idp_social" "linkedin" {
   client_secret     = "abcd123"
   username_template = "idpuser.email"
 }
+*/
