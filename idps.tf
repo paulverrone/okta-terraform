@@ -16,15 +16,13 @@ resource "okta_idp_social" "google" {
   #subject_match_attribute   = "customfieldId"
 }
 
-/*
 data okta_policy idp_discovery_policy {
   name = "IDP Discovery Policy"
   type = "IDP_DISCOVERY"
 }
-*/
 
 resource okta_policy_rule_idp_discovery idp_discovery_policy {
-  #policyid             = "${data.okta_policy.test.id}"
+  policyid             = "${data.okta_policy.test.id}"
   priority             = 1
   name                 = "IDP Discovery Policy"
   idp_type             = "GOOGLE"
