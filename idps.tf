@@ -31,7 +31,7 @@ resource okta_policy_rule_idp_discovery idp_routing_rule_google {
   priority             = 1
   name                 = "Sign in with Google"
   idp_type             = "GOOGLE"
-  idp_id               = resource.okta_idp_social.google.id
+  idp_id               = $(resource.okta_idp_social.google.id)
   user_identifier_type = "IDENTIFIER"
 
   user_identifier_patterns {
