@@ -17,6 +17,26 @@ resource "okta_idp_social" "google" {
 }
 
 /*
+data okta_policy idp_discovery_policy {
+  name = "IDP Discovery Policy"
+  type = "IDP_DISCOVERY"
+}
+*/
+
+resource okta_policy_rule_idp_discovery idp_discovery_policy {
+  #policyid             = "${data.okta_policy.test.id}"
+  priority             = 1
+  name                 = "IDP Discovery Policy"
+  idp_type             = "GOOGLE"
+  user_identifier_type = "IDENTIFIER"
+
+  user_identifier_patterns {
+    match_type = "SUFFIX"
+    value      = "gmail.com"
+  }
+}
+
+/*
 resource "okta_idp_social" "facebook" {
   type          = "FACEBOOK"
   protocol_type = "OAUTH2"
