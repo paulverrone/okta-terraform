@@ -19,6 +19,8 @@ resource okta_idp_social google {
 }
 
 # Routing Rules
+# Okta has a built-in, uneditable routing policy.  As such, you need to find the object before you can create a routing rule, since all rules
+# must be associated with a policy.
 data okta_policy idp_discovery_policy {
   name = "Idp Discovery Policy"
   type = "IDP_DISCOVERY"
@@ -29,7 +31,7 @@ resource okta_policy_rule_idp_discovery idp_routing_rule_google {
   priority             = 1
   name                 = "IDP Discovery Policy"
   idp_type             = "GOOGLE"
-  idp_id               = data.okta_idp_social.google.id
+  idp_id               = resource.okta_idp_social.google.id
   user_identifier_type = "IDENTIFIER"
 
   user_identifier_patterns {
