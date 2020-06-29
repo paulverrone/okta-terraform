@@ -22,7 +22,7 @@ data okta_policy idp_discovery_policy {
 }
 
 resource okta_policy_rule_idp_discovery idp_discovery_policy {
-  policyid             = "${data.okta_policy.test.id}"
+  policyid             = data.okta_policy.idp_discovery_policy.id
   priority             = 1
   name                 = "IDP Discovery Policy"
   idp_type             = "GOOGLE"
