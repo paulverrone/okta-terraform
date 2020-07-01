@@ -6,6 +6,13 @@ resource "okta_auth_server" "customer_portal" {
   status      = "ACTIVE"
 }
 
+resource "okta_auth_server_scope" "account_read" {
+  auth_server_id = "${okta_auth_server.customer_portal.id}"
+  consent        = "REQUIRED"
+  description    = "This allows the app to view your IATCore account information."
+  name           = "account.read"
+}
+
 /*
 resource "okta_auth_server_claim" "test" {
   auth_server_id = "${okta_auth_server.test.id}"
@@ -16,12 +23,7 @@ resource "okta_auth_server_claim" "test" {
   value          = "cool"
 }
 
-resource "okta_auth_server_scope" "test" {
-  auth_server_id = "${okta_auth_server.test.id}"
-  consent        = "REQUIRED"
-  description    = "This is a scope"
-  name           = "test:something"
-}
+
 
 resource "okta_auth_server_policy" "test" {
   auth_server_id   = "${okta_auth_server.test.id}"
