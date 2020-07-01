@@ -25,7 +25,7 @@ resource "okta_auth_server_claim" "test" {
 resource "okta_auth_server_policy" "default_policy" {
   auth_server_id   = okta_auth_server.customer_portal.id
   status           = "ACTIVE"
-  name             = "test policy"
+  name             = "Default policy"
   description      = "update"
   priority         = 1
   client_whitelist = ["${var.OIDC_Client_Id}"]
@@ -39,7 +39,7 @@ resource "okta_auth_server_policy_rule" "default_rule" {
   auth_server_id       = okta_auth_server.customer_portal.id
   policy_id            = okta_auth_server_policy.default_policy.id
   status               = "ACTIVE"
-  name                 = "test rule"
+  name                 = "Default rule"
   priority             = 1
   group_whitelist      = ["${data.okta_group.everyone.id}"]
   grant_type_whitelist = ["authorization_code", "password", "implicit"]
