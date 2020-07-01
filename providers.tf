@@ -5,6 +5,6 @@ provider "okta" {
     api_token = var.api_token
 }
 
-module "auth-server-customer" {
+module "auth-servers" {
   source = "../modules/auth-servers"
 }
