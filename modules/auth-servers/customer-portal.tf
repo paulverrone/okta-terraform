@@ -26,7 +26,7 @@ resource "okta_auth_server_policy" "default_policy" {
   auth_server_id   = okta_auth_server.customer_portal.id
   status           = "ACTIVE"
   name             = "Default policy"
-  description      = "update"
+  description      = "Default policy used to show authorization server"
   priority         = 1
   client_whitelist = ["${var.OIDC_Client_Id}"]
 }
