@@ -2,7 +2,7 @@ resource "okta_auth_server" "IAT_customer_facing" {
   audiences   = ["api://iatcore.com"]
   description = "Auth Server that handles customer-facing apps"
   name        = "Customer Facing Auth"
-  issuer_mode = "CUSTOM_URL"
+  issuer_mode = "ORG_URL"
   status      = "ACTIVE"
 }
 
