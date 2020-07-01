@@ -16,8 +16,8 @@ resource "okta_auth_server_scope" "account_read" {
 
 resource "okta_auth_server_claim" "test" {
   auth_server_id = okta_auth_server.customer_portal.id
-  name           = "staff"
-  value          = "String.substringAfter(user.email, \"@\") == \"example.com\""
+  name           = "Type"
+  value          = "user.userType"
   scopes         = ["${okta_auth_server_scope.account_read.name}"]
   claim_type     = "IDENTITY"
 }
