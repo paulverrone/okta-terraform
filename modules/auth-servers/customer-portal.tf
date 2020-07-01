@@ -11,20 +11,19 @@ resource "okta_auth_server_scope" "account_read" {
   consent        = "REQUIRED"
   description    = "This allows the app to view your IATCore account information."
   name           = "account.read"
+  # Need ability to set the displayname for the scope
 }
+
+resource "okta_auth_server_claim" "test" {
+  auth_server_id = okta_auth_server.customer_portal.id
+  name           = "staff"
+  value          = "String.substringAfter(user.email, \"@\") == \"example.com\""
+  scopes         = ["${okta_auth_server_scope.account_read.name}"]
+  claim_type     = "IDENTITY"
+}
+
 
 /*
-resource "okta_auth_server_claim" "test" {
-  auth_server_id = "${okta_auth_server.test.id}"
-  name           = "test"
-  status         = "ACTIVE"
-  claim_type     = "RESOURCE"
-  value_type     = "EXPRESSION"
-  value          = "cool"
-}
-
-
-
 resource "okta_auth_server_policy" "test" {
   auth_server_id   = "${okta_auth_server.test.id}"
   status           = "ACTIVE"
