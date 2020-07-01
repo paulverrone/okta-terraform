@@ -6,5 +6,5 @@ provider "okta" {
 }
 
 module "auth-servers" {
-  source = "../../../modules/auth-servers"
+  source = "../../modules/auth-servers"
 }
