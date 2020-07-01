@@ -1,7 +1,7 @@
-resource "okta_auth_server" "IAT_customer_facing" {
+resource "okta_auth_server" "customer_portal" {
   audiences   = ["api://iatcore.com"]
   description = "Auth Server that handles customer-facing apps"
-  name        = "Customer Facing Auth"
+  name        = "Customer Portal"
   issuer_mode = "ORG_URL"
   status      = "ACTIVE"
 }
