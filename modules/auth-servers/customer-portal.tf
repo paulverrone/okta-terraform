@@ -35,12 +35,13 @@ data "okta_group" "everyone" {
   name = "Everyone"
 }
 
-resource "okta_auth_server_policy_rule" "test" {
+resource "okta_auth_server_policy_rule" "default_rule" {
   auth_server_id       = okta_auth_server.customer_portal.id
   policy_id            = okta_auth_server_policy.default_policy.id
   status               = "ACTIVE"
   name                 = "test rule"
   priority             = 1
   group_whitelist      = ["${data.okta_group.everyone.id}"]
-  grant_type_whitelist = ["password", "implicit"]
+  grant_type_whitelist = ["authorization_code", "password", "implicit"]
+  scope_whitelist      = ["*"]
 }
