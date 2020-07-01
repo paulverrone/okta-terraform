@@ -22,15 +22,13 @@ resource "okta_auth_server_claim" "test" {
   claim_type     = "IDENTITY"
 }
 
-
-/*
-resource "okta_auth_server_policy" "test" {
-  auth_server_id   = "${okta_auth_server.test.id}"
+resource "okta_auth_server_policy" "default_policy" {
+  auth_server_id   = okta_auth_server.customer_portal.id
   status           = "ACTIVE"
-  name             = "test"
+  name             = "test policy"
   description      = "update"
   priority         = 1
-  client_whitelist = ["${okta_app_oauth.test.id}"]
+  client_whitelist = ["${vars.OIDC_Client_Id}"]
 }
 
 data "okta_group" "everyone" {
@@ -38,12 +36,11 @@ data "okta_group" "everyone" {
 }
 
 resource "okta_auth_server_policy_rule" "test" {
-  auth_server_id       = "${okta_auth_server.test.id}"
-  policy_id            = "${okta_auth_server_policy.test.id}"
+  auth_server_id       = okta_auth_server.customer_portal.id
+  policy_id            = "okta_auth_server_policy.default_policy.id}"
   status               = "ACTIVE"
-  name                 = "test"
+  name                 = "test rule"
   priority             = 1
   group_whitelist      = ["${data.okta_group.everyone.id}"]
   grant_type_whitelist = ["password", "implicit"]
 }
-*/
