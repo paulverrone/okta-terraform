@@ -37,7 +37,7 @@ data "okta_group" "everyone" {
 
 resource "okta_auth_server_policy_rule" "test" {
   auth_server_id       = okta_auth_server.customer_portal.id
-  policy_id            = "okta_auth_server_policy.default_policy.id}"
+  policy_id            = okta_auth_server_policy.default_policy.id
   status               = "ACTIVE"
   name                 = "test rule"
   priority             = 1
