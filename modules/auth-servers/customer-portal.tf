@@ -28,7 +28,7 @@ resource "okta_auth_server_policy" "default_policy" {
   name             = "test policy"
   description      = "update"
   priority         = 1
-  client_whitelist = ["${vars.OIDC_Client_Id}"]
+  client_whitelist = ["${var.OIDC_Client_Id}"]
 }
 
 data "okta_group" "everyone" {
