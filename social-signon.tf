@@ -4,6 +4,7 @@ resource "okta_idp_social" "google" {
   type          = "GOOGLE"
   protocol_type = "OAUTH2"
   name          = "Google IdP"
+  profile_master = true
 
   scopes = [
     "profile",
