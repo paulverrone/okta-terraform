@@ -9,3 +9,7 @@ module "auth-servers" {
   source = ".//modules/auth-servers"
   OIDC_Client_Id = okta_app_oauth.oidc_sample.id
 }
+    
+module "applications" {
+    source = ".//modules/applications"
+}
