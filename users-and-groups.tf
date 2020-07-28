@@ -48,22 +48,22 @@ data "okta_group" "all_group" {
 
 # Add recruiting group to apps
 resource "okta_app_group_assignment" "assign_twitter_recruiting" {
-  app_id   = okta_app_auto_login.corporate_twitter.id
+  app_id   = module.applications.swa_corporate_twitter_id
   group_id = data.okta_group.recruiting_group.id
 }
 
 resource "okta_app_group_assignment" "assign_facebook_recruiting" {
-  app_id   = okta_app_auto_login.corporate_facebook.id
+  app_id   = module.applications.swa_corporate_facebook_id
   group_id = data.okta_group.recruiting_group.id
 }
 
 resource "okta_app_group_assignment" "assign_linkedin_recruiting" {
-  app_id   = okta_app_auto_login.corporate_linkedin.id
+  app_id   = module.applications.swa_corporate_linkedin_id
   group_id = data.okta_group.recruiting_group.id
 }
 
 resource "okta_app_group_assignment" "assign_oidc_example_all" {
-    app_id = module.applications.oidc_superwidget_id.id 
+    app_id = module.applications.oidc_superwidget_id 
     #okta_app_oauth.oidc_sample.id
     group_id = data.okta_group.all_group.id
 }
