@@ -1,3 +1,6 @@
+# MOVED TO MODULES - delete file once tested
+
+/*
 resource "okta_app_auto_login" "corporate_twitter" {
   label          = "Twitter - Shared Corporate Account"
   preconfigured_app = "twitter"
@@ -45,7 +48,7 @@ resource "okta_app_oauth" "oidc_sample" {
   }
 }
 
-/* Need to determine how to specify Github Organization Name
+ Need to determine how to specify Github Organization Name
 resource "okta_app_auto_login" "github" {
   label          = "GitHub Team"
   preconfigured_app = "github team"
