@@ -64,6 +64,6 @@ resource "okta_auth_server_policy_rule" "customer_portal_default_rule" {
   priority             = 1
   group_whitelist      = ["${data.okta_group.everyone.id}"]
   grant_type_whitelist = ["client_credentials"]
-  scope_whitelist      = ["open_id", "profile", "iat.account.read"]
+  scope_whitelist      = ["openid", "profile", "iat.account.read"]
 }
 
