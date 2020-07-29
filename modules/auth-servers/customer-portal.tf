@@ -60,7 +60,7 @@ resource "okta_auth_server_policy_rule" "customer_portal_default_rule" {
   auth_server_id       = okta_auth_server.customer_portal.id
   policy_id            = okta_auth_server_policy.customer_portal_policy.id
   status               = "ACTIVE"
-  name                 = "Client Credentials"
+  name                 = "Client Credentials/Auth Code"
   priority             = 1
   group_whitelist      = ["${data.okta_group.everyone.id}"]
   grant_type_whitelist = ["client_credentials", "authorization_code"]
