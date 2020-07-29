@@ -1,5 +1,5 @@
 output "oidc_superwidget_id" {
-  value = "${okta_app_oauth.oidc_sample.id}"
+  value = "${okta_app_oauth.okta_super_widget.id}"
   }
 
 output "swa_corporate_linkedin_id" {
