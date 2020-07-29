@@ -8,7 +8,7 @@ resource "okta_auth_server" "customer_portal" {
 
 resource "okta_auth_server_scope" "account_read" {
   auth_server_id = okta_auth_server.customer_portal.id
-  consent        = "REQUIRED"
+  #consent        = "REQUIRED"
   description    = "This allows the app to view your IATCore account information."
   name           = "iat.account.read"
   # Need ability to set the displayname for the scope
