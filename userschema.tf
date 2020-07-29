@@ -5,6 +5,7 @@ resource "okta_user_schema" "isVerified" {
   description = "Stores whether the user has been verified as a customer"
   master      = "OKTA"
   scope       = "SELF"
+  permissions = "READ_WRITE"
 }
 
 resource "okta_user_schema" "clientId" {
@@ -14,4 +15,5 @@ resource "okta_user_schema" "clientId" {
   description = "Stores the customer's account ID"
   master      = "OKTA"
   scope       = "SELF"
+  permissions = "READ_WRITE"
 }
