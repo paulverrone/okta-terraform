@@ -1,6 +1,6 @@
-resource "okta_app_oauth" "oidc_sample" {
+resource "okta_app_oauth" "okta_super_widget" {
   status         = "ACTIVE"
-  label          = "OIDC Demo Application"
+  label          = "Okta Super Widget"
   type           = "web"
   redirect_uris  = ["https://super-widget.oktaprise.com"]
   login_uri      = "https://super-widget.oktaprise.com"
