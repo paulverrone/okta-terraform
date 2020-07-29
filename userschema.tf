@@ -6,3 +6,12 @@ resource "okta_user_schema" "isVerified" {
   master      = "OKTA"
   scope       = "SELF"
 }
+
+resource "okta_user_schema" "clientId" {
+  index       = "clientId"
+  title       = "Client ID"
+  type        = "string"
+  description = "Stores the customer's account ID"
+  master      = "OKTA"
+  scope       = "SELF"
+}
