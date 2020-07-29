@@ -8,7 +8,8 @@ provider "okta" {
 module "auth-servers" {
     source = ".//modules/auth-servers"
     OIDC_Client_Id = module.applications.oidc_superwidget_id
-    #okta_app_oauth.oidc_sample.id
+    Customer_Portal_App_Id = module.applications.customer_portal_app_id
+
 }
     
 module "applications" {
