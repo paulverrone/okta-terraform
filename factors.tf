@@ -11,6 +11,14 @@ resource "okta_factor" "factor_okta_call" {
   provider_id = "okta_call"
 }
 
+resource "okta_factor" "factor_okta_question" {
+  provider_id = "okta_question"
+}
+
+resource "okta_factor" "factor_okta_sms" {
+  provider_id = "okta_sms"
+}
+
 /* Provider does not support this factor type yet
 resource "okta_factor" "factor_okta_email" {
   provider_id = "okta_email"
