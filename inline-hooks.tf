@@ -6,7 +6,7 @@ resource "okta_inline_hook" "validate_client_id" {
 
   channel = {
     version = "1.0.0"
-    type    = "HTTP"
+    type    = "HTTPS"
     uri     = "https://iatcoreapim.azure-api.net/okta/registration"
     method  = "POST"
   }
