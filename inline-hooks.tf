@@ -1,5 +1,5 @@
-resource "okta_inline_hook" "validate_client_id" {
-  name    = "Validate Client ID"
+resource "okta_inline_hook" "validate_client_id_registration" {
+  name    = "Validate Client ID on Registration"
   version = "1.0.0"
   type    = "com.okta.user.pre-registration"
   status  = "ACTIVE"
