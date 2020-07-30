@@ -15,4 +15,5 @@ module "auth-servers" {
 module "applications" {
     source = ".//modules/applications"
     shared_admin_password_swa = var.shared_admin_password_swa
+    azure_apim_endpoint = var.azure_apim_endpoint
 }
