@@ -5,3 +5,4 @@ variable "base_url" {}
 variable "shared_admin_password_swa" {}
 variable "sso_google_client_id" {}
 variable "sso_google_client_secret" {}
+variable "azure_apim_endpoint" {}
