@@ -11,5 +11,9 @@ resource "okta_inline_hook" "validate_client_id" {
     method  = "POST"
   }
 
-  
+  auth = {
+    key   = "Authorization"
+    type  = "HEADER"
+    value = "1234"
+  }
 }
