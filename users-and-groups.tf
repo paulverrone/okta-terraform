@@ -67,7 +67,8 @@ resource "okta_app_group_assignment" "assign_linkedin_recruiting" {
   app_id   = module.applications.swa_corporate_linkedin_id
   group_id = okta_group.recruiting_group.id
 }
-
+    
+# Add everyone group to apps    
 resource "okta_app_group_assignment" "assign_oidc_example_all" {
     app_id = module.applications.oidc_superwidget_id 
     group_id = data.okta_group.all_group.id
