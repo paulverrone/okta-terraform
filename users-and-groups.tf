@@ -23,6 +23,14 @@ resource "okta_group" "recruiting_group" {
     description = "Group that contains employees that are part of the recruiting department"
 }
 
+resource "okta_group_rule" "Recruiting" {
+  name              = "Recruiting"
+  status            = "ACTIVE"
+  group_assignments = [ okta_group.recruiting_group.id ]
+  expression_type   = "urn:okta:expression:1.0"
+  expression_value  = "String.equals(user.department,\"Recruiting\")"
+}
+
 # Create Okta-mastered group "DMZ Admins" and add users
 resource "okta_group" "dmzadmin_group" {
     name = "DMZ Server Admins"
@@ -52,10 +60,10 @@ resource "okta_app_group_assignment" "assign_linkedin_recruiting" {
 
 resource "okta_app_group_assignment" "assign_oidc_example_all" {
     app_id = module.applications.oidc_superwidget_id 
-    group_id = okta_group.all_group.id
+    group_id = data.okta_group.all_group.id
 }
     
 resource "okta_app_group_assignment" "assign_customer_portal_all" {
     app_id = module.applications.customer_portal_app_id 
-    group_id = okta_group.all_group.id
+    group_id = data.okta_group.all_group.id
 }    
