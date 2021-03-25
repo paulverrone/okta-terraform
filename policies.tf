@@ -20,7 +20,7 @@ resource "okta_policy_mfa" "recruiting_mfa_policy" {
     enroll = "NOT_ALLOWED"
   } 
 
-  groups_included = ["${data.okta_group.recruiting_group.id}"]
+  groups_included = ["data.okta_group.recruiting_group.id"]
   
   depends_on = [
     okta_factor.factor_okta_verify,
