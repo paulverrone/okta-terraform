@@ -44,7 +44,7 @@ resource "okta_group_rule" "dmzadmin_grouprule" {
   status            = "ACTIVE"
   group_assignments = [ okta_group.recruiting_group.id ]
   expression_type   = "urn:okta:expression:1.0"
-  expression_value  = "String.equals(user.department,\"Recruiting\")"
+  expression_value  = "String.equals(user.department,\"DMZ Ops\")"
 }
 
 # Find everyone group
