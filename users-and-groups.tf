@@ -23,7 +23,14 @@ resource "okta_group" "recruiting_group" {
     description = "Group that contains employees that are part of the recruiting department"
 }
 
-resource "okta_group_rule" "Recruiting" {
+# Create Okta-mastered group "DMZ Admins" and add users
+resource "okta_group" "dmzadmin_group" {
+    name = "DMZ Server Admins"
+    description = "Group that contains employees that are responsible for DMZ Servers"
+}
+
+# Create Okta group rule to add users to the Recruiting group
+resource "okta_group_rule" "recruiting_grouprule" {
   name              = "Recruiting"
   status            = "ACTIVE"
   group_assignments = [ okta_group.recruiting_group.id ]
@@ -31,10 +38,13 @@ resource "okta_group_rule" "Recruiting" {
   expression_value  = "String.equals(user.department,\"Recruiting\")"
 }
 
-# Create Okta-mastered group "DMZ Admins" and add users
-resource "okta_group" "dmzadmin_group" {
-    name = "DMZ Server Admins"
-    description = "Group that contains employees that are responsible for DMZ Servers"
+# Create Okta group rule to add users to the DMZ Admin Group
+resource "okta_group_rule" "dmzadmin_grouprule" {
+  name              = "DMZ Admins"
+  status            = "ACTIVE"
+  group_assignments = [ okta_group.recruiting_group.id ]
+  expression_type   = "urn:okta:expression:1.0"
+  expression_value  = "String.equals(user.department,\"Recruiting\")"
 }
 
 # Find everyone group
