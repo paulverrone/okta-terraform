@@ -18,7 +18,7 @@ resource "okta_auth_server_claim" "test" {
   auth_server_id = okta_auth_server.customer_portal.id
   name           = "Type"
   value          = "user.userType"
-  scopes         = ["${okta_auth_server_scope.account_read.name}"]
+  scopes         = ["okta_auth_server_scope.account_read.name"]
   claim_type     = "IDENTITY"
 }
 
@@ -32,7 +32,7 @@ resource "okta_auth_server_policy" "default_policy" {
   name             = "Default policy"
   description      = "Default policy used to show authorization server"
   priority         = 2
-  client_whitelist = ["${var.OIDC_Client_Id}"]
+  client_whitelist = ["var.OIDC_Client_Id"]
 }
 
 resource "okta_auth_server_policy_rule" "default_rule" {
@@ -41,7 +41,7 @@ resource "okta_auth_server_policy_rule" "default_rule" {
   status               = "ACTIVE"
   name                 = "Default rule"
   priority             = 1
-  group_whitelist      = ["${data.okta_group.everyone.id}"]
+  group_whitelist      = ["data.okta_group.everyone.id"]
   grant_type_whitelist = ["authorization_code", "password", "implicit"]
   scope_whitelist      = ["*"]
 }
@@ -53,7 +53,7 @@ resource "okta_auth_server_policy" "customer_portal_policy" {
   name             = "Customer Portal App policy"
   description      = "Allows access to scopes for the customer portal app"
   priority         = 1
-  client_whitelist = ["${var.Customer_Portal_App_Id}"]
+  client_whitelist = ["var.Customer_Portal_App_Id"]
 }
 
 resource "okta_auth_server_policy_rule" "customer_portal_default_rule" {
@@ -62,7 +62,7 @@ resource "okta_auth_server_policy_rule" "customer_portal_default_rule" {
   status               = "ACTIVE"
   name                 = "Client Credentials/Auth Code"
   priority             = 1
-  group_whitelist      = ["${data.okta_group.everyone.id}"]
+  group_whitelist      = ["data.okta_group.everyone.id"]
   grant_type_whitelist = ["client_credentials", "authorization_code"]
   scope_whitelist      = ["openid", "profile", "iat.account.read"]
 }
