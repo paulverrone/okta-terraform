@@ -7,7 +7,7 @@ resource "okta_user" "okta_terraform_admin" {
     status     = "ACTIVE"
     
     lifecycle {
-        ignore_changes = [admin_roles]
+        ignore_changes = [admin_roles, group_memberships]
     }
 }
 
@@ -22,10 +22,6 @@ resource "okta_user_admin_roles" "okta_role_super_admin" {
 resource "okta_group" "service_accounts" {
     name        = "Okta Service Accounts"
     description = "Group that contains all users that represent Service Accounts"
-
-    lifecycle {
-        ignore_changes = [group_memberships]
-    }
 }
 
 resource "okta_group_memberships" "service_account_group_members" {
