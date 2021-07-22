@@ -1,4 +1,4 @@
-resource "okta_user_schema" "isVerified" {
+resource "okta_user_schema_property" "isVerified" {
   index       = "isVerified"
   title       = "Is Verified?"
   type        = "boolean"
@@ -8,7 +8,7 @@ resource "okta_user_schema" "isVerified" {
   permissions = "READ_WRITE"
 }
 
-resource "okta_user_schema" "clientId" {
+resource "okta_user_schema_property" "clientId" {
   index       = "clientId"
   title       = "Client ID"
   type        = "string"
