@@ -30,7 +30,7 @@ resource "okta_policy_mfa" "recruiting_mfa_policy" {
 }
 
 resource okta_policy_rule_mfa marketing_mfa {
-  policyid           = okta_policy_mfa.recruiting_mfa_policy.id
+  policy_id           = okta_policy_mfa.recruiting_mfa_policy.id
   name               = "MFA Enrollment"
   status             = "ACTIVE"
   enroll             = "LOGIN"
@@ -48,7 +48,7 @@ resource "okta_policy_signon" "recruiting_signon_policy" {
 }
 
 resource "okta_policy_rule_signon" "recruiting_signon_rule_mfa" {
-  policyid = okta_policy_signon.recruiting_signon_policy.id
+  policy_id = okta_policy_signon.recruiting_signon_policy.id
   name     = "Always MFA when not in company location"
   status   = "ACTIVE"
   mfa_required = "true"
