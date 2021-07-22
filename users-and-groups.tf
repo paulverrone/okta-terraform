@@ -5,7 +5,17 @@ resource "okta_user" "okta_terraform_admin" {
     login      = "OktaTerraformAdmin@iatcore.com"
     email      = "OktaTerraformAdmin@iatcore.com"
     status     = "ACTIVE"
-    admin_roles = ["SUPER_ADMIN"]
+    
+    lifecycle {
+        ignore_changes = [admin_roles]
+    }
+}
+
+resource "okta_user_admin_roles" "okta_role_super_admin" {
+  user_id     = okta_user.okta_terraform_admin.id
+  admin_roles = [
+    "SUPER_ADMIN",
+  ]
 }
 
 # Create Okta-mastered group "Okta Service Accounts" and add users
