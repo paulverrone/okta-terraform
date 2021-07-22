@@ -28,7 +28,7 @@ data okta_policy idp_discovery_policy {
 }
 
 resource okta_policy_rule_idp_discovery idp_routing_rule_google {
-  policyid             = data.okta_policy.idp_discovery_policy.id
+  policy_id             = data.okta_policy.idp_discovery_policy.id
   priority             = 1
   name                 = "Sign in with Google"
   idp_type             = "GOOGLE"
