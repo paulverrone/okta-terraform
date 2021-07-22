@@ -22,9 +22,17 @@ resource "okta_user_admin_roles" "okta_role_super_admin" {
 resource "okta_group" "service_accounts" {
     name        = "Okta Service Accounts"
     description = "Group that contains all users that represent Service Accounts"
-    users = [
-        "okta_user.okta_terraform_admin.id"
-    ]
+
+    lifecycle {
+        ignore_changes = [group_memberships]
+    }
+}
+
+resource "okta_group_memberships" "service_account_group_members" {
+  group_id = okta_group.service_accounts.id
+  users = [
+    okta_user.okta_terraform_admin.id,
+  ]
 }
 
 # Create Okta-mastered group "Recruiting" and add users
