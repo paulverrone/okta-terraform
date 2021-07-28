@@ -24,7 +24,7 @@ resource "okta_policy_mfa" "recruiting_mfa_policy" {
   
   depends_on = [
     okta_factor.factor_okta_verify,
-
+    okta_factor.factor_okta_call,
     okta_factor.factor_google_authenticator
   ]
 }
