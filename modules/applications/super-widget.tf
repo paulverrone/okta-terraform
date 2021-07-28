@@ -7,6 +7,7 @@ resource "okta_app_oauth" "okta_super_widget" {
   grant_types    = ["implicit", "authorization_code", "refresh_token"]
   response_types = ["code", "token", "id_token"]
   consent_method = "TRUSTED"
+  refresh_token_rotation = "ROTATE"
   lifecycle {
     ignore_changes = [users, groups]
   }
