@@ -49,7 +49,7 @@ resource "okta_group_rule" "recruiting_grouprule" {
   status            = "ACTIVE"
   group_assignments = [ okta_group.recruiting_group.id ]
   expression_type   = "urn:okta:expression:1.0"
-  expression_value  = "String.equals(user.department,\"Recruiting\")"
+  expression_value  = "user.department==\"Recruiting\""
 }
 
 # Create Okta group rule to add users to the DMZ Admin Group
