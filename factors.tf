@@ -17,7 +17,6 @@ resource "okta_factor" "factor_okta_question" {
 
 resource "okta_factor" "factor_okta_sms" {
   provider_id = "okta_sms"
-  active = true
 }
 
 resource "okta_factor" "factor_okta_email" {
