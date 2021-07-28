@@ -20,7 +20,7 @@ resource "okta_policy_mfa" "recruiting_mfa_policy" {
     enroll = "NOT_ALLOWED"
   } 
 
-  groups_included = [ data.okta_group.recruiting_group.id ]
+  groups_included = [ okta_group.recruiting_group.id ]
   
   depends_on = [
     okta_factor.factor_okta_verify,
@@ -44,7 +44,7 @@ resource "okta_policy_signon" "recruiting_signon_policy" {
   name            = "Recruiting"
   status          = "ACTIVE"
   description     = "MFA when not in company location"
-  groups_included = [ data.okta_group.recruiting_group.id ]
+  groups_included = [ okta_group.recruiting_group.id ]
 }
 
 resource "okta_policy_rule_signon" "recruiting_signon_rule_mfa" {
