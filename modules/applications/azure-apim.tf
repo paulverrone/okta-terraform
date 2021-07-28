@@ -8,6 +8,7 @@ resource "okta_app_oauth" "azure_apim" {
   grant_types    = ["client_credentials", "authorization_code"]
   response_types = ["code"]
   consent_method = "TRUSTED"
+  refresh_token_rotation = "ROTATE"
   lifecycle {
     ignore_changes = [users, groups]
   }
