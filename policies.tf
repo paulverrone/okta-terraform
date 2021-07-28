@@ -44,7 +44,7 @@ resource "okta_policy_signon" "recruiting_signon_policy" {
   name            = "Recruiting"
   status          = "ACTIVE"
   description     = "MFA when not in company location"
-  groups_included = ["data.okta_group.dmzadmin_group.id"]
+  groups_included = ["data.okta_group.recruiting_group.id"]
 }
 
 resource "okta_policy_rule_signon" "recruiting_signon_rule_mfa" {
