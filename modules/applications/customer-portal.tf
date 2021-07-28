@@ -10,6 +10,7 @@ resource "okta_app_oauth" "customer_portal" {
   grant_types    = ["client_credentials", "authorization_code", "refresh_token"]
   response_types = ["code"]
   consent_method = "TRUSTED"
+  refresh_token_rotation = "ROTATE"
   lifecycle {
     ignore_changes = [users, groups]
   }
