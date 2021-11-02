@@ -11,7 +11,7 @@ resource "okta_network_zone" "blacklisted_countries" {
 }
 
 resource "okta_network_zone" "corporate_locations" {
-  name     = "Corporate Locations1"
+  name     = "Corporate Locations"
   type     = "DYNAMIC"
   dynamic_locations = [
   "BS",
